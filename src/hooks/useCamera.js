@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { DEFAULT_MIRRORED } from '../config.js';
+import { PERF_PROFILE } from '../perf.js';
 
 export function useCamera() {
   const videoRef = useRef(null);
@@ -32,7 +33,11 @@ export function useCamera() {
       try {
         if (!navigator.mediaDevices?.getUserMedia) throw new Error('unsupported');
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: { ideal: mode }, width: { ideal: 1280 }, height: { ideal: 960 } },
+          video: {
+            facingMode: { ideal: mode },
+            width: { ideal: PERF_PROFILE.cameraWidth },
+            height: { ideal: PERF_PROFILE.cameraHeight },
+          },
           audio: false,
         });
         release();

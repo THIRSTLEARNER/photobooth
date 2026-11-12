@@ -1593,6 +1593,44 @@ h2 {
   }
 }
 
+html[data-reduce-effects='true'] .glass,
+html[data-reduce-effects='true'] .topbar,
+html[data-reduce-effects='true'] .topbar-badge,
+html[data-reduce-effects='true'] .hero-steps li,
+html[data-reduce-effects='true'] .floating-tag,
+html[data-reduce-effects='true'] .count-badge,
+html[data-reduce-effects='true'] .stage-pill,
+html[data-reduce-effects='true'] .icon-btn,
+html[data-reduce-effects='true'] .field-disclosure {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html[data-reduce-effects='true'] .glass {
+  background: rgba(24, 30, 70, 0.94);
+}
+
+html[data-reduce-effects='true'] .topbar,
+html[data-reduce-effects='true'] .floating-tag,
+html[data-reduce-effects='true'] .count-badge,
+html[data-reduce-effects='true'] .hero-steps li,
+html[data-reduce-effects='true'] .icon-btn {
+  background-color: rgba(18, 24, 58, 0.92);
+}
+
+html[data-reduce-effects='true'] .orbs {
+  display: none;
+}
+
+html[data-reduce-effects='true'] .floating-tag {
+  animation: none;
+}
+
+html[data-reduce-effects='true'] .hero-art::after {
+  filter: none;
+  opacity: 0.25;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -12,8 +12,6 @@ import {
 import { detectFace, toStageFace } from '../face.js';
 import { PROPS, dogProp, loadPropImage, propRectOnFace, staticPropRect } from '../props.js';
 import {
-  CAPTURE_HEIGHT,
-  CAPTURE_WIDTH,
   DEFAULT_COUNTDOWN_SECONDS,
   DEFAULT_MIRRORED,
   DEFAULT_OUTPUT_FORMAT,
@@ -21,6 +19,7 @@ import {
   DEFAULT_SHOT_COUNT,
   FACE_RECENT_FOR_CAPTURE_MS,
 } from '../config.js';
+import { PERF_PROFILE } from '../perf.js';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -96,8 +95,8 @@ export function useCaptureSession({
     const v = videoRef.current;
     if (!v) throw new Error('no video');
     const c = document.createElement('canvas');
-    c.width = CAPTURE_WIDTH;
-    c.height = CAPTURE_HEIGHT;
+    c.width = PERF_PROFILE.captureWidth;
+    c.height = PERF_PROFILE.captureHeight;
     const ctx = c.getContext('2d');
     const sw = Math.min(v.videoWidth, (v.videoHeight * 4) / 3);
     const sh = (sw * 3) / 4;

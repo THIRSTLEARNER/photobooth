@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { detectFace, loadFaceDetector, smoothFace, toStageFace } from '../face.js';
 import { propRectOnFace, staticPropRect } from '../props.js';
-import {
-  DEFAULT_MIRRORED,
-  FACE_DETECT_INTERVAL_MS,
-  FACE_STALE_FREEZE_MS,
-  FACE_STALE_HIDE_MS,
-} from '../config.js';
+import { DEFAULT_MIRRORED, FACE_STALE_FREEZE_MS, FACE_STALE_HIDE_MS } from '../config.js';
+import { PERF_PROFILE } from '../perf.js';
 
 export function useFaceTracking({
   videoRef,
@@ -101,7 +97,7 @@ export function useFaceTracking({
 
     const tick = (detector, now) => {
       if (stopped) return;
-      if (now - lastRun >= FACE_DETECT_INTERVAL_MS) {
+      if (now - lastRun >= PERF_PROFILE.faceDetectIntervalMs) {
         lastRun = now;
         runDetection(detector);
       }
