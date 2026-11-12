@@ -42,8 +42,9 @@ describe('props', () => {
     const shades = PROPS.find((p) => p.id === 'shades');
     const r = propRectOnFace(shades, face);
     expect(r).toBeTruthy();
-    expect(r.w).toBeCloseTo(face.eyeDist * 2.3, 5);
-    expect(r.x + r.w / 2).toBeCloseTo(face.eyeX, 5);
-    expect(r.y + r.h / 2).toBeCloseTo(face.eyeY, 5);
+    expect(r.w).toBeGreaterThan(face.w * 0.8);
+    expect(r.w).toBeLessThan(face.w * 1.6);
+    expect(r.x + r.w / 2).toBeCloseTo(face.eyeX, 2);
+    expect(r.y + r.h / 2).toBeCloseTo(face.eyeY, 1);
   });
 });

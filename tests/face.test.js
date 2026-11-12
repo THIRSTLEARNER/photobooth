@@ -62,31 +62,33 @@ describe('smoothFace', () => {
 
   it('interpolates fields toward next', () => {
     const prev = {
-      x: 0,
-      y: 0,
-      w: 1,
-      h: 1,
-      eyeX: 0,
-      eyeY: 0,
-      eyeDist: 1,
-      noseY: 0,
-      mouthY: 0,
+      x: 0.45,
+      y: 0.44,
+      w: 0.3,
+      h: 0.4,
+      eyeX: 0.48,
+      eyeY: 0.46,
+      eyeDist: 0.12,
+      noseY: 0.52,
+      mouthY: 0.6,
       angle: 0,
     };
     const next = {
-      x: 1,
-      y: 1,
-      w: 0,
-      h: 0,
-      eyeX: 1,
-      eyeY: 1,
-      eyeDist: 0,
-      noseY: 1,
-      mouthY: 1,
+      x: 0.55,
+      y: 0.56,
+      w: 0.3,
+      h: 0.4,
+      eyeX: 0.52,
+      eyeY: 0.54,
+      eyeDist: 0.12,
+      noseY: 0.58,
+      mouthY: 0.66,
       angle: 0,
     };
     const out = smoothFace(prev, next, 0.5);
     expect(out.x).toBeCloseTo(0.5, 5);
-    expect(out.eyeDist).toBeCloseTo(0.5, 5);
+    expect(out.y).toBeCloseTo(0.5, 5);
+    expect(out.eyeX).toBeCloseTo(0.5, 5);
+    expect(out.eyeDist).toBeCloseTo(0.12, 5);
   });
 });

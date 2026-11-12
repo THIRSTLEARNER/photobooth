@@ -12,14 +12,24 @@ export function loadFaceDetector() {
     detectorPromise = (async () => {
       const { FaceDetector, FilesetResolver } = await import('@mediapipe/tasks-vision');
       const fileset = await FilesetResolver.forVisionTasks('/mediapipe');
-      return FaceDetector.createFromOptions(fileset, {
-        baseOptions: {
-          modelAssetPath: '/models/blaze_face_short_range.tflite',
-          delegate: 'CPU',
-        },
-        runningMode: 'VIDEO',
-        minDetectionConfidence: 0.55,
-      });
+      const baseOptions = {
+        modelAssetPath: '/models/blaze_face_short_range.tflite',
+      };
+      let detector;
+      try {
+        detector = await FaceDetector.createFromOptions(fileset, {
+          baseOptions: { ...baseOptions, delegate: 'GPU' },
+          runningMode: 'VIDEO',
+          minDetectionConfidence: 0.5,
+        });
+      } catch {
+        detector = await FaceDetector.createFromOptions(fileset, {
+          baseOptions: { ...baseOptions, delegate: 'CPU' },
+          runningMode: 'VIDEO',
+          minDetectionConfidence: 0.5,
+        });
+      }
+      return detector;
     })().catch((error) => {
       // Let a later attempt retry if loading failed (offline, bad asset, …).
       detectorPromise = null;
@@ -140,14 +150,34 @@ export function toStageFace(face, videoWidth, videoHeight, mirrored = true) {
   };
 }
 
-// Light smoothing keeps the sticker from jittering between detections.
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+// Light smoothing keeps the sticker from jittering between detections while
+// damping sudden jumps (brief landmark glitches or fast movement).
 export function smoothFace(previous, next, amount = 0.45) {
   if (!previous) return next;
-  const mix = (a, b) => a + (b - a) * amount;
-  // Keep angle continuous across the ±pi boundary.
+  const dx = (next.x ?? 0) - (previous.x ?? 0);
+  const dy = (next.y ?? 0) - (previous.y ?? 0);
+  const jump = Math.hypot(dx, dy);
+  const sizeDelta =
+    Math.abs((next.w ?? 0) - (previous.w ?? 0)) + Math.abs((next.h ?? 0) - (previous.h ?? 0));
+  let a = amount;
+  if (jump > 0.24 || sizeDelta > 0.3) a = Math.min(a, 0.18);
+  else if (jump > 0.16 || sizeDelta > 0.18) a = Math.min(a, 0.32);
+
+  const mix = (p, n) => p + (n - p) * a;
+
+  // Keep angle continuous across the ±pi boundary and clamp extreme snaps.
   let da = (next.angle || 0) - (previous.angle || 0);
   if (da > Math.PI) da -= Math.PI * 2;
   if (da < -Math.PI) da += Math.PI * 2;
+  da = clamp(da, -0.6, 0.6);
+
+  const eyeDistPrev = previous.eyeDist ?? next.eyeDist ?? 0.2;
+  const eyeDistNext = clamp(next.eyeDist ?? eyeDistPrev, eyeDistPrev * 0.7, eyeDistPrev * 1.3);
+
   return {
     x: mix(previous.x, next.x),
     y: mix(previous.y, next.y),
@@ -155,9 +185,9 @@ export function smoothFace(previous, next, amount = 0.45) {
     h: mix(previous.h, next.h),
     eyeX: mix(previous.eyeX ?? next.eyeX, next.eyeX ?? previous.eyeX),
     eyeY: mix(previous.eyeY, next.eyeY),
-    eyeDist: mix(previous.eyeDist ?? next.eyeDist, next.eyeDist ?? previous.eyeDist),
+    eyeDist: mix(eyeDistPrev, eyeDistNext),
     noseY: mix(previous.noseY ?? next.noseY, next.noseY ?? previous.noseY),
     mouthY: mix(previous.mouthY, next.mouthY),
-    angle: (previous.angle || 0) + da * amount,
+    angle: (previous.angle || 0) + da * a,
   };
 }

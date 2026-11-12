@@ -1033,6 +1033,15 @@ h2 {
     0 10px 26px -12px rgba(124, 92, 255, 0.9),
     inset 0 1px 0 rgba(255, 255, 255, 0.65),
     inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+  animation: chip-select 180ms ease-out;
+}
+@keyframes chip-select {
+  from {
+    transform: scale(0.97);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 .chip:disabled {
   opacity: 0.5;

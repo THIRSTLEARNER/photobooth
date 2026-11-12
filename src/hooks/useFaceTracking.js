@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { detectFace, loadFaceDetector, smoothFace, toStageFace } from '../face.js';
-import { propRectOnFace, staticPropRect } from '../props.js';
-import { DEFAULT_MIRRORED, FACE_STALE_FREEZE_MS, FACE_STALE_HIDE_MS } from '../config.js';
+import { propRectOnFace } from '../props.js';
+import { DEFAULT_MIRRORED } from '../config.js';
 import { PERF_PROFILE } from '../perf.js';
+
+// Grace period before hiding after the face is lost, to avoid flicker on brief misses.
+const NO_FACE_GRACE_MS = 420;
 
 export function useFaceTracking({
   videoRef,
@@ -29,6 +32,7 @@ export function useFaceTracking({
   useEffect(() => {
     if (!ready || !propOn) {
       faceRef.current = null;
+      setHasFace(false);
       if (propLayerRef.current) propLayerRef.current.style.opacity = '0';
       return undefined;
     }
@@ -40,57 +44,54 @@ export function useFaceTracking({
 
     if (!detectorRef.current) setTracker('loading');
 
-    const _hide = () => {
+    const hideLayer = () => {
       faceRef.current = null;
-      setHasFace((seen) => (seen ? false : seen));
+      setHasFace(false);
       if (propLayerRef.current) propLayerRef.current.style.opacity = '0';
     };
-    void _hide;
+
+    const applyRect = (rect) => {
+      const el = propLayerRef.current;
+      if (!el || !rect) return;
+      el.style.left = `${(rect.x + rect.w / 2) * 100}%`;
+      el.style.top = `${rect.y * 100}%`;
+      el.style.width = `${rect.w * 100}%`;
+      el.style.transform = `translateX(-50%) rotate(${rect.angle || 0}rad)`;
+      el.style.opacity = '1';
+    };
 
     const runDetection = (detector) => {
       const v = videoRef.current;
       if (v && v.readyState >= 2) {
         try {
           const raw = detectFace(detector, v);
+          const now = performance.now();
           if (raw) {
             const mapped = toStageFace(raw, v.videoWidth, v.videoHeight, mirrored);
             const previous = faceRef.current;
             const face = previous ? smoothFace(previous, mapped) : mapped;
-            face.ts = performance.now();
+            face.ts = now;
             faceRef.current = face;
-            lastSeen = face.ts;
-            setHasFace((seen) => (seen ? seen : true));
+            lastSeen = now;
+            setHasFace(true);
 
-            const el = propLayerRef.current;
-            if (el) {
-              const r = propRectOnFace(activePropRef.current, face);
-              if (r) {
-                el.style.left = `${(r.x + r.w / 2) * 100}%`;
-                el.style.top = `${r.y * 100}%`;
-                el.style.width = `${r.w * 100}%`;
-                el.style.transform = `translateX(-50%) rotate(${r.angle || 0}rad)`;
-                el.style.opacity = '1';
-              }
-            }
-          } else if (performance.now() - lastSeen > FACE_STALE_HIDE_MS) {
-            // No face in view for a while: fall back to a stable default placement.
-            faceRef.current = null;
-            setHasFace((seen) => (seen ? false : seen));
-            const el = propLayerRef.current;
-            const r = staticPropRect(activePropRef.current);
-            if (el && r) {
-              el.style.left = `${(r.x + r.w / 2) * 100}%`;
-              el.style.top = `${r.y * 100}%`;
-              el.style.width = `${r.w * 100}%`;
-              el.style.transform = 'translateX(-50%)';
-              el.style.opacity = '1';
-            }
-          } else if (performance.now() - lastSeen > FACE_STALE_FREEZE_MS) {
-            // Brief loss: keep the last known placement visible.
-            setHasFace((seen) => (seen ? false : seen));
+            const r = propRectOnFace(activePropRef.current, face);
+            if (r) applyRect(r);
+          } else if (lastSeen && now - lastSeen <= NO_FACE_GRACE_MS) {
+            // Brief miss: keep last known placement for stability, but mark face as not detected.
+            setHasFace(false);
+          } else {
+            // No face detected (or grace expired): hide the prop instead of showing a static fallback.
+            hideLayer();
           }
         } catch {
           // A dropped frame isn't fatal; try again on the next tick.
+          const now = performance.now();
+          if (lastSeen && now - lastSeen <= NO_FACE_GRACE_MS) {
+            setHasFace(false);
+          } else if (!lastSeen || now - lastSeen > NO_FACE_GRACE_MS) {
+            hideLayer();
+          }
         }
       }
     };
@@ -116,17 +117,8 @@ export function useFaceTracking({
         detectorRef.current = null;
         setTracker('error');
         setHasFace(false);
-
-        // Keep the old centred placement usable if the tracker can't load.
-        const el = propLayerRef.current;
-        const r = staticPropRect(activePropRef.current);
-        if (el && r) {
-          el.style.left = `${(r.x + r.w / 2) * 100}%`;
-          el.style.top = `${r.y * 100}%`;
-          el.style.width = `${r.w * 100}%`;
-          el.style.transform = 'translateX(-50%)';
-          el.style.opacity = '1';
-        }
+        faceRef.current = null;
+        if (propLayerRef.current) propLayerRef.current.style.opacity = '0';
       }
     })();
 
@@ -145,12 +137,12 @@ export function useFaceTracking({
   const trackingNote = !propOn
     ? ''
     : tracker === 'error'
-      ? 'The face filter couldn’t load, so props stay centred. Refresh to try again.'
+      ? 'Face tracking is unavailable, so props stay hidden. Refresh to try again.'
       : trackingLoading
-        ? 'Loading the face filter…'
+        ? 'Loading face tracking…'
         : hasFace
-          ? 'Props are locked to your face — move around and they’ll follow.'
-          : 'Face filter on — show your face to place the sticker.';
+          ? 'Prop locked to your face — move around and it will follow.'
+          : 'Show your face to place the prop. It disappears when no face is detected.';
 
   return {
     propLayerRef,

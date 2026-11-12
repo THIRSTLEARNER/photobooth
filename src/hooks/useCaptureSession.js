@@ -10,7 +10,7 @@ import {
   mimeForFormat,
 } from '../compose.js';
 import { detectFace, toStageFace } from '../face.js';
-import { PROPS, dogProp, loadPropImage, propRectOnFace, staticPropRect } from '../props.js';
+import { PROPS, dogProp, loadPropImage, propRectOnFace } from '../props.js';
 import {
   DEFAULT_COUNTDOWN_SECONDS,
   DEFAULT_MIRRORED,
@@ -117,14 +117,15 @@ export function useCaptureSession({
       c.height
     );
 
+    const now = performance.now();
     let face =
-      faceRef.current && performance.now() - faceRef.current.ts < FACE_RECENT_FOR_CAPTURE_MS
+      faceRef.current && now - (faceRef.current.ts || 0) < FACE_RECENT_FOR_CAPTURE_MS
         ? faceRef.current
         : null;
     if (detectorRef.current && v.readyState >= 2) {
       try {
         const raw = detectFace(detectorRef.current, v);
-        face = raw ? toStageFace(raw, v.videoWidth, v.videoHeight, mirrored) : null;
+        if (raw) face = toStageFace(raw, v.videoWidth, v.videoHeight, mirrored);
       } catch {
         // Use the most recent live position if this frame can't be read.
       }
@@ -133,8 +134,8 @@ export function useCaptureSession({
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.filter = 'none';
     const bakedProp = activePropRef.current;
-    if (bakedProp.url) {
-      const rect = face ? propRectOnFace(bakedProp, face) : staticPropRect(bakedProp);
+    if (bakedProp?.url && face) {
+      const rect = propRectOnFace(bakedProp, face);
       if (rect) {
         try {
           const img = await loadPropImage(bakedProp);
