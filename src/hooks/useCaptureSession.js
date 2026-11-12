@@ -45,6 +45,7 @@ export function useCaptureSession({
   const [flash, setFlash] = useState(0);
   const [shots, setShots] = useState([]); // (string|null)[]
   const [strip, setStrip] = useState('');
+  const [editedStrip, setEditedStrip] = useState('');
   const [dogTongue, setDogTongue] = useState(true);
 
   const activeProp = useMemo(
@@ -77,12 +78,14 @@ export function useCaptureSession({
           const dataUrl = await canvasToDataUrl(canvas, outputFormat, outputQuality);
           if (!alive) return;
           setStrip(dataUrl);
+          setEditedStrip('');
           if (phase !== 'done') setPhase('done');
         } catch {
           if (alive) setStatus?.('Failed to compose the strip.');
         }
       } else {
         setStrip('');
+        setEditedStrip('');
         if (phase === 'done') setPhase('idle');
       }
     })();
@@ -241,10 +244,32 @@ export function useCaptureSession({
     setPhase('idle');
   };
 
+  const effectiveStrip = editedStrip || strip;
+
+  const getActiveStripCanvas = async () => {
+    if (editedStrip) {
+      const img = await new Promise((resolve, reject) => {
+        const el = new Image();
+        el.onload = () => resolve(el);
+        el.onerror = reject;
+        el.src = editedStrip;
+      });
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      return canvas;
+    }
+    if (!filledShots.length) return null;
+    return composeStripCanvas(filledShots, frame, layout.id);
+  };
+
   const download = async () => {
-    if (!filledShots.length) return;
+    if (!filledShots.length && !editedStrip) return;
     try {
-      const canvas = await composeStripCanvas(filledShots, frame, layout.id);
+      const canvas = await getActiveStripCanvas();
+      if (!canvas) return;
       const blob = await canvasToBlob(canvas, outputFormat, outputQuality);
       if (!blob) return;
       const url = URL.createObjectURL(blob);
@@ -259,9 +284,10 @@ export function useCaptureSession({
   };
 
   const share = async () => {
-    if (!filledShots.length) return false;
+    if (!filledShots.length && !editedStrip) return false;
     try {
-      const canvas = await composeStripCanvas(filledShots, frame, layout.id);
+      const canvas = await getActiveStripCanvas();
+      if (!canvas) return false;
       const blob = await canvasToBlob(canvas, outputFormat, outputQuality);
       if (!blob) return false;
       const file = new File([blob], `snapbooth-strip.${extensionForFormat(outputFormat)}`, {
@@ -278,9 +304,57 @@ export function useCaptureSession({
   };
 
   const getStripDataUrl = async () => {
+    if (editedStrip) return editedStrip;
     if (!filledShots.length) return '';
     const canvas = await composeStripCanvas(filledShots, frame, layout.id);
     return canvasToDataUrl(canvas, outputFormat, outputQuality);
+  };
+
+  const applyStripSticker = async ({ src, rect }) => {
+    // rect: normalized {x,y,w,h,angle,opacity,flipX} relative to strip image.
+    if (!src || !rect) return false;
+    try {
+      const baseSrc = editedStrip || strip;
+      if (!baseSrc) return false;
+      const [baseImg, stickerImg] = await Promise.all([
+        new Promise((resolve, reject) => {
+          const el = new Image();
+          el.onload = () => resolve(el);
+          el.onerror = reject;
+          el.src = baseSrc;
+        }),
+        new Promise((resolve, reject) => {
+          const el = new Image();
+          el.onload = () => resolve(el);
+          el.onerror = reject;
+          el.src = src;
+        }),
+      ]);
+      const canvas = document.createElement('canvas');
+      canvas.width = baseImg.naturalWidth || baseImg.width;
+      canvas.height = baseImg.naturalHeight || baseImg.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(baseImg, 0, 0);
+      const dx = rect.x * canvas.width;
+      const dy = rect.y * canvas.height;
+      const dw = rect.w * canvas.width;
+      const dh = rect.h * canvas.height;
+      ctx.save();
+      ctx.globalAlpha = rect.opacity ?? 1;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 4;
+      ctx.translate(dx + dw / 2, dy + dh / 2);
+      if (rect.angle) ctx.rotate(rect.angle);
+      if (rect.flipX) ctx.scale(-1, 1);
+      ctx.drawImage(stickerImg, -dw / 2, -dh / 2, dw, dh);
+      ctx.restore();
+      setEditedStrip(canvas.toDataURL('image/png'));
+      return true;
+    } catch {
+      setStatus?.('Couldn’t apply the sticker to the strip.');
+      return false;
+    }
   };
 
   return {
@@ -306,7 +380,11 @@ export function useCaptureSession({
     flash,
     shots,
     filledShots,
-    strip,
+    strip: effectiveStrip,
+    baseStrip: strip,
+    editedStrip,
+    setEditedStrip,
+    applyStripSticker,
     setStrip,
     dogTongue,
     activeProp,

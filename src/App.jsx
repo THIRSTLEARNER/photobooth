@@ -145,6 +145,9 @@ export default function App() {
             retake={capture.retake}
             status={status}
             shooting={shooting}
+            applyStripSticker={capture.applyStripSticker}
+            editedStrip={capture.editedStrip}
+            setEditedStrip={capture.setEditedStrip}
           />
         </div>
 
