@@ -105,7 +105,7 @@ export function ControlsPanel({
           <div className="row" role="group" aria-labelledby="filters">
             {FILTERS.map((f) => (
               <button
-                key={f.id}
+                key={`${f.id}-${filter.id === f.id}`}
                 className="chip"
                 aria-pressed={filter.id === f.id}
                 onClick={() => setFilter(f)}
@@ -130,7 +130,7 @@ export function ControlsPanel({
           <div className="row" role="group" aria-labelledby="props">
             {PROPS.map((p) => (
               <button
-                key={p.id}
+                key={`${p.id}-${prop.id === p.id}`}
                 className="chip"
                 aria-pressed={prop.id === p.id}
                 onClick={() => setProp(p)}
