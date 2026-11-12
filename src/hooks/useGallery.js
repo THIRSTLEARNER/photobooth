@@ -72,12 +72,25 @@ export function useGallery() {
           headers: headers({ 'Content-Type': 'application/json' }),
           body: JSON.stringify({ image: strip }),
         });
-        if (!res.ok) throw new Error();
+        if (!res.ok) {
+          let message = 'Couldn’t save the strip.';
+          try {
+            const data = await res.json();
+            if (data && typeof data.error === 'string' && data.error) message = data.error;
+          } catch {
+            // ignore parse errors
+          }
+          throw new Error(message);
+        }
         setStatus('Saved to your private gallery.');
         await loadGallery({ reset: true });
         return true;
-      } catch {
-        setStatus('Couldn’t save the strip. Check that the server is running.');
+      } catch (err) {
+        setStatus(
+          err && err.message && err.message !== 'Failed to fetch'
+            ? err.message
+            : 'Couldn’t save the strip. Check that the server is running.'
+        );
         return false;
       }
     },
