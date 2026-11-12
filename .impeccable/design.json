@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-12T00:00:00.000Z",
+  "title": "Design System: Snapbooth Glass",
+  "extensions": {
+    "colorMeta": {
+      "midnight-void": {
+        "role": "neutral",
+        "displayName": "Midnight Void",
+        "canonical": "#070b1d",
+        "tonalRamp": [
+          "#02030a",
+          "#070b1d",
+          "#0d1430",
+          "#141d42",
+          "#1e2a55",
+          "#2c3b70",
+          "#44548d",
+          "#6b7db3"
+        ]
+      },
+      "glass-ink": {
+        "role": "neutral",
+        "displayName": "Glass Ink",
+        "canonical": "#f4f6ff",
+        "tonalRamp": [
+          "#1a1f33",
+          "#3a4266",
+          "#6b7699",
+          "#9aa6c7",
+          "#c7d0e8",
+          "#dde4f5",
+          "#edf1fb",
+          "#f4f6ff"
+        ]
+      },
+      "mist-muted": {
+        "role": "neutral",
+        "displayName": "Mist Muted",
+        "canonical": "#d3dbf5",
+        "tonalRamp": [
+          "#1b2238",
+          "#3a4666",
+          "#606f99",
+          "#8898bf",
+          "#aebcdd",
+          "#c3ceea",
+          "#d3dbf5",
+          "#e8ecfb"
+        ]
+      },
+      "cool-label": {
+        "role": "neutral",
+        "displayName": "Cool Label",
+        "canonical": "#cbd3f2",
+        "tonalRamp": [
+          "#1a2138",
+          "#394466",
+          "#5f6d99",
+          "#8796bf",
+          "#adbadd",
+          "#bec8e9",
+          "#cbd3f2",
+          "#e6eaf9"
+        ]
+      },
+      "electric-amethyst": {
+        "role": "primary",
+        "displayName": "Electric Amethyst",
+        "canonical": "#7c5cff",
+        "tonalRamp": [
+          "#120826",
+          "#24104d",
+          "#3a1f80",
+          "#5330b3",
+          "#6842d9",
+          "#7c5cff",
+          "#a18cff",
+          "#d1c6ff"
+        ]
+      },
+      "royal-amethyst": {
+        "role": "primary",
+        "displayName": "Royal Amethyst",
+        "canonical": "#6a47f0",
+        "tonalRamp": [
+          "#100726",
+          "#200f4d",
+          "#331a80",
+          "#4827b3",
+          "#5936d9",
+          "#6a47f0",
+          "#9278f5",
+          "#c9bdfb"
+        ]
+      },
+      "aurora-mint": {
+        "role": "primary",
+        "displayName": "Aurora Mint",
+        "canonical": "#2ee6d6",
+        "tonalRamp": [
+          "#041f1d",
+          "#083f3a",
+          "#0d635a",
+          "#138a7e",
+          "#1db3a5",
+          "#2ee6d6",
+          "#7cf2e8",
+          "#c7fbf6"
+        ]
+      },
+      "flash-magenta": {
+        "role": "secondary",
+        "displayName": "Flash Magenta",
+        "canonical": "#ff5fa2",
+        "tonalRamp": [
+          "#260714",
+          "#4d0f29",
+          "#801a44",
+          "#b32460",
+          "#e0337e",
+          "#ff5fa2",
+          "#ff96c1",
+          "#ffd1e4"
+        ]
+      },
+      "deep-magenta": {
+        "role": "secondary",
+        "displayName": "Deep Magenta",
+        "canonical": "#e0408a",
+        "tonalRamp": [
+          "#220512",
+          "#450a24",
+          "#70113b",
+          "#991754",
+          "#c2246f",
+          "#e0408a",
+          "#ec80b1",
+          "#f7c7dd"
+        ]
+      },
+      "warm-filament": {
+        "role": "tertiary",
+        "displayName": "Warm Filament",
+        "canonical": "#ffc46b",
+        "tonalRamp": [
+          "#261703",
+          "#4d2e06",
+          "#80500d",
+          "#b37113",
+          "#e0921a",
+          "#ffc46b",
+          "#ffd79d",
+          "#ffedd1"
+        ]
+      },
+      "focus-cyan": {
+        "role": "tertiary",
+        "displayName": "Focus Cyan",
+        "canonical": "#7ff3e8",
+        "tonalRamp": [
+          "#062321",
+          "#0c4642",
+          "#136e67",
+          "#1a998f",
+          "#22c7ba",
+          "#7ff3e8",
+          "#adf8f1",
+          "#dcfcf9"
+        ]
+      },
+      "success-mint": {
+        "role": "tertiary",
+        "displayName": "Success Mint",
+        "canonical": "#3cf0a0",
+        "tonalRamp": [
+          "#042214",
+          "#084428",
+          "#0d6b3f",
+          "#139457",
+          "#1ac071",
+          "#3cf0a0",
+          "#86f6c5",
+          "#cdfce6"
+        ]
+      },
+      "strip-ink": {
+        "role": "neutral",
+        "displayName": "Strip Ink",
+        "canonical": "#1b2150",
+        "tonalRamp": [
+          "#060812",
+          "#0d1026",
+          "#14183a",
+          "#1b2150",
+          "#27306b",
+          "#3a468f",
+          "#6672b8",
+          "#aab3de"
+        ]
+      },
+      "strip-caption": {
+        "role": "neutral",
+        "displayName": "Strip Caption",
+        "canonical": "#6a74a8",
+        "tonalRamp": [
+          "#101322",
+          "#202644",
+          "#313a66",
+          "#454f88",
+          "#5963a0",
+          "#6a74a8",
+          "#9aa2c6",
+          "#d2d6e8"
+        ]
+      },
+      "hero-lilac": {
+        "role": "accent",
+        "displayName": "Hero Lilac",
+        "canonical": "#d9d4ff",
+        "tonalRamp": [
+          "#2a2440",
+          "#4a3f73",
+          "#6b5aa6",
+          "#8c75d9",
+          "#b39cff",
+          "#d9d4ff",
+          "#e8e4ff",
+          "#f5f3ff"
+        ]
+      },
+      "hero-mint": {
+        "role": "accent",
+        "displayName": "Hero Mint",
+        "canonical": "#a6fff4",
+        "tonalRamp": [
+          "#06302b",
+          "#0c6056",
+          "#139081",
+          "#1ac0ac",
+          "#5fe6d8",
+          "#a6fff4",
+          "#d1fff9",
+          "#edfffd"
+        ]
+      },
+      "hero-violet": {
+        "role": "accent",
+        "displayName": "Hero Violet",
+        "canonical": "#b8a5ff",
+        "tonalRamp": [
+          "#20183d",
+          "#40307a",
+          "#6048b7",
+          "#8060f4",
+          "#9f85ff",
+          "#b8a5ff",
+          "#d6ccff",
+          "#f0ebff"
+        ]
+      },
+      "hero-rose": {
+        "role": "accent",
+        "displayName": "Hero Rose",
+        "canonical": "#ffb7d3",
+        "tonalRamp": [
+          "#3d1424",
+          "#7a2848",
+          "#b73c6c",
+          "#f45090",
+          "#ff84b4",
+          "#ffb7d3",
+          "#ffd6e7",
+          "#fff0f6"
+        ]
+      },
+      "step-seafoam": {
+        "role": "accent",
+        "displayName": "Step Seafoam",
+        "canonical": "#9dfff4",
+        "tonalRamp": [
+          "#06302b",
+          "#0c6056",
+          "#139081",
+          "#1ac0ac",
+          "#5fe6d8",
+          "#9dfff4",
+          "#cffff9",
+          "#ecfffd"
+        ]
+      },
+      "strip-lavender": {
+        "role": "neutral",
+        "displayName": "Strip Lavender",
+        "canonical": "#cdd6ff",
+        "tonalRamp": [
+          "#1a1f3d",
+          "#343e7a",
+          "#4e5db7",
+          "#687cf4",
+          "#97a6ff",
+          "#cdd6ff",
+          "#e3e8ff",
+          "#f4f6ff"
+        ]
+      },
+      "chrome-blue": {
+        "role": "accent",
+        "displayName": "Chrome Blue",
+        "canonical": "#4c7dff",
+        "tonalRamp": [
+          "#081433",
+          "#102866",
+          "#184099",
+          "#2058cc",
+          "#3870ff",
+          "#4c7dff",
+          "#8aaaff",
+          "#d1deff"
+        ]
+      },
+      "chrome-teal": {
+        "role": "accent",
+        "displayName": "Chrome Teal",
+        "canonical": "#19d3c5",
+        "tonalRamp": [
+          "#042a27",
+          "#08544e",
+          "#0c7e75",
+          "#10a89c",
+          "#15c0b3",
+          "#19d3c5",
+          "#7fe9e1",
+          "#ccf7f3"
+        ]
+      },
+      "primary-lift": {
+        "role": "primary",
+        "displayName": "Primary Lift",
+        "canonical": "#8b6bff",
+        "tonalRamp": [
+          "#140a2e",
+          "#28145c",
+          "#3e1f8f",
+          "#5530b8",
+          "#6f48de",
+          "#8b6bff",
+          "#b39cff",
+          "#ddd4ff"
+        ]
+      },
+      "mask-ink": {
+        "role": "neutral",
+        "displayName": "Mask Ink",
+        "canonical": "#000",
+        "tonalRamp": [
+          "#000000",
+          "#111111",
+          "#222222",
+          "#444444",
+          "#666666",
+          "#888888",
+          "#bbbbbb",
+          "#ffffff"
+        ]
+      },
+      "shadow-soft": {
+        "role": "neutral",
+        "displayName": "Shadow Soft",
+        "canonical": "rgba(0, 0, 0, 0.45)",
+        "tonalRamp": [
+          "rgba(0,0,0,0.05)",
+          "rgba(0,0,0,0.1)",
+          "rgba(0,0,0,0.2)",
+          "rgba(0,0,0,0.3)",
+          "rgba(0,0,0,0.45)",
+          "rgba(0,0,0,0.6)",
+          "rgba(0,0,0,0.75)",
+          "rgba(0,0,0,0.9)"
+        ]
+      },
+      "shadow-deep": {
+        "role": "neutral",
+        "displayName": "Shadow Deep",
+        "canonical": "rgba(0, 0, 0, 0.55)",
+        "tonalRamp": [
+          "rgba(0,0,0,0.08)",
+          "rgba(0,0,0,0.15)",
+          "rgba(0,0,0,0.25)",
+          "rgba(0,0,0,0.35)",
+          "rgba(0,0,0,0.55)",
+          "rgba(0,0,0,0.7)",
+          "rgba(0,0,0,0.85)",
+          "rgba(0,0,0,1)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline and celebratory display moments."
+      },
+      "display-compact": {
+        "displayName": "Display Compact",
+        "purpose": "Responsive compact hero display size."
+      },
+      "headline-lg": {
+        "displayName": "Headline Large",
+        "purpose": "Larger section and empty-state headlines."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Brand wordmark, section heads, and key titles."
+      },
+      "title": { "displayName": "Title", "purpose": "Panel/field headings and supporting titles." },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs, ledes, helper copy, and control text."
+      },
+      "body-strong": {
+        "displayName": "Body Strong",
+        "purpose": "Emphasized UI/body text and controls."
+      },
+      "body-ui": { "displayName": "Body UI", "purpose": "Standard UI control text." },
+      "small": { "displayName": "Small", "purpose": "Small control and pill text." },
+      "meta": { "displayName": "Meta", "purpose": "Compact metadata and helper text." },
+      "caption": { "displayName": "Caption", "purpose": "Secondary captions and notes." },
+      "micro": { "displayName": "Micro", "purpose": "Microcopy and compact labels." },
+      "fine": { "displayName": "Fine", "purpose": "Fine print and compact supporting labels." },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase eyebrows, field labels, badges, and metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glass-panel-ambient",
+        "value": "0 30px 70px -24px rgba(2, 6, 24, 0.9), 0 10px 30px -14px rgba(2, 6, 24, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(255, 255, 255, 0.05)",
+        "purpose": "Ambient lift and inner highlights for frosted glass panels."
+      },
+      {
+        "name": "nav-glass",
+        "value": "0 22px 45px -26px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -1px 0 rgba(255, 255, 255, 0.05)",
+        "purpose": "Sticky frosted navigation bar lift."
+      },
+      {
+        "name": "button-primary",
+        "value": "0 14px 30px -10px rgba(106, 71, 240, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.45)",
+        "purpose": "Primary action glow and specular highlight."
+      },
+      {
+        "name": "button-primary-hover",
+        "value": "0 20px 40px -12px rgba(106, 71, 240, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
+        "purpose": "Lifted hover state for primary actions."
+      },
+      {
+        "name": "chip-active-glow",
+        "value": "0 10px 26px -12px rgba(124, 92, 255, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(255, 255, 255, 0.12)",
+        "purpose": "Selected/pressed chip state with violet glow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-ui",
+        "value": "ease",
+        "purpose": "Default UI transitions for hover, focus, and state changes."
+      },
+      {
+        "name": "ease-emphasis",
+        "value": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Entrance/emphasis motion such as strip reveal."
+      },
+      {
+        "name": "dur-fast",
+        "value": "0.12s–0.2s",
+        "purpose": "Micro-interactions (press, hover, focus color/border)."
+      },
+      {
+        "name": "dur-medium",
+        "value": "0.24s–0.45s",
+        "purpose": "Lifts, image scaling, and sheen/feedback sweeps."
+      },
+      {
+        "name": "dur-ambient",
+        "value": "26s–44s",
+        "purpose": "Slow aurora/orb drift in the background scene."
+      }
+    ],
+    "breakpoints": [
+      { "name": "hero-two-col", "value": "960px" },
+      { "name": "booth-two-col", "value": "900px" },
+      { "name": "compact", "value": "560px" },
+      { "name": "narrow", "value": "420px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary call-to-action with amethyst-magenta gradient, specular sheen, and lift on hover.",
+      "html": "<button class=\"ds-btn-primary\">Start photo session</button>",
+      "css": ".ds-btn-primary{position:relative;overflow:hidden;min-height:52px;padding:0 24px;border-radius:999px;border:1px solid rgba(255,255,255,0.35);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#8b6bff 0%,#6a47f0 42%,#e0408a 100%);color:#f4f6ff;font:700 1rem Figtree,system-ui,sans-serif;letter-spacing:0.01em;box-shadow:0 14px 30px -10px rgba(106,71,240,0.75),inset 0 1px 0 rgba(255,255,255,0.45);transition:transform 0.16s ease,box-shadow 0.16s ease,filter 0.16s ease}.ds-btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 20px 40px -12px rgba(106,71,240,0.85),inset 0 1px 0 rgba(255,255,255,0.5)}.ds-btn-primary:active{transform:translateY(0) scale(0.99)}.ds-btn-primary:focus-visible{outline:3px solid #7ff3e8;outline-offset:3px}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Secondary frosted-glass button for quieter actions.",
+      "html": "<button class=\"ds-btn-quiet\">Retake</button>",
+      "css": ".ds-btn-quiet{min-height:52px;padding:0 24px;border-radius:999px;border:1px solid rgba(255,255,255,0.18);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,0.07);color:#f4f6ff;font:700 1rem Figtree,system-ui,sans-serif;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);transition:background 0.18s ease,transform 0.16s ease}.ds-btn-quiet:hover{background:rgba(255,255,255,0.14);transform:translateY(-1px)}.ds-btn-quiet:active{transform:translateY(0)}.ds-btn-quiet:focus-visible{outline:3px solid #7ff3e8;outline-offset:3px}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill toggle chip for filters/props/options with frosted default and glowing selected state.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"false\">Noir</button> <button class=\"ds-chip ds-chip-active\" aria-pressed=\"true\">Aurora</button>",
+      "css": ".ds-chip{min-height:44px;padding:0 16px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.07);color:#f4f6ff;font:600 0.92rem Figtree,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);transition:background 0.18s,border-color 0.18s,transform 0.12s,box-shadow 0.18s;margin-right:8px}.ds-chip:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.3)}.ds-chip:active{transform:scale(0.96)}.ds-chip.ds-chip-active,.ds-chip[aria-pressed=\"true\"]{background:linear-gradient(150deg,rgba(255,255,255,0.34),rgba(255,255,255,0.12)),rgba(124,92,255,0.2);color:#fff;border-color:rgba(255,255,255,0.6);box-shadow:0 10px 26px -12px rgba(124,92,255,0.9),inset 0 1px 0 rgba(255,255,255,0.65),inset 0 -1px 0 rgba(255,255,255,0.12)}.ds-chip:focus-visible{outline:3px solid #7ff3e8;outline-offset:3px}"
+    },
+    {
+      "name": "Glass Panel",
+      "kind": "card",
+      "refersTo": "glass-panel",
+      "description": "Primary frosted container with translucent fill, ambient lift, and specular glass character.",
+      "html": "<section class=\"ds-glass-panel\"><h3 class=\"ds-panel-title\">Camera</h3><p class=\"ds-panel-body\">Frame your shot, pick a look, and start the countdown.</p></section>",
+      "css": ".ds-glass-panel{position:relative;display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:30px;border:1px solid rgba(255,255,255,0.1);background:linear-gradient(155deg,rgba(255,255,255,0.16),rgba(255,255,255,0.055) 45%,rgba(255,255,255,0.025)),rgba(13,19,48,0.32);box-shadow:0 30px 70px -24px rgba(2,6,24,0.9),0 10px 30px -14px rgba(2,6,24,0.7),inset 0 1px 0 rgba(255,255,255,0.22),inset 0 -1px 0 rgba(255,255,255,0.05);color:#f4f6ff;font-family:Figtree,system-ui,sans-serif;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%)}.ds-panel-title{margin:0;font:800 1.15rem/1.2 Syne,system-ui,sans-serif;letter-spacing:-0.01em;color:#f4f6ff}.ds-panel-body{margin:0;font:400 0.95rem/1.55 Figtree,system-ui,sans-serif;color:#d3dbf5}"
+    },
+    {
+      "name": "Field Label and Range",
+      "kind": "input",
+      "refersTo": "",
+      "description": "Uppercase field label with an aurora-styled quality range control.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Output quality</span><input class=\"ds-range\" type=\"range\" min=\"0\" max=\"100\" value=\"92\" /></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:10px;color:#d3dbf5;font-family:Figtree,system-ui,sans-serif}.ds-field-label{font:700 0.72rem/1 Figtree,system-ui,sans-serif;letter-spacing:0.16em;text-transform:uppercase;color:#cbd3f2}.ds-range{width:100%;height:28px;margin:0;background:transparent;cursor:pointer;accent-color:#2ee6d6}.ds-range:focus-visible{outline:3px solid #7ff3e8;outline-offset:4px}"
+    },
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Sticky frosted pill navigation with brand mark, links, and status badge.",
+      "html": "<nav class=\"ds-topbar\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-brand-mark\">✦</span><span>Snapbooth Glass</span></a><div class=\"ds-topnav\"><a class=\"ds-nav-link\" href=\"#\">Booth</a><a class=\"ds-nav-link\" href=\"#\">Gallery</a></div></nav>",
+      "css": ".ds-topbar{display:flex;align-items:center;gap:12px;padding:9px 10px 9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);background:linear-gradient(150deg,rgba(255,255,255,0.16),rgba(255,255,255,0.045) 55%),rgba(9,14,36,0.58);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);box-shadow:0 22px 45px -26px rgba(0,0,0,0.95),inset 0 1px 0 rgba(255,255,255,0.28);color:#f4f6ff;font-family:Figtree,system-ui,sans-serif}.ds-brand{display:flex;align-items:center;gap:10px;color:#f4f6ff;text-decoration:none;font:800 1.18rem/1 Syne,system-ui,sans-serif;letter-spacing:-0.01em}.ds-brand-mark{width:36px;height:36px;border-radius:12px;display:inline-grid;place-items:center;background:linear-gradient(140deg,rgba(124,92,255,0.95),rgba(46,230,214,0.7));border:1px solid rgba(255,255,255,0.35)}.ds-topnav{display:flex;gap:2px;margin-left:auto}.ds-nav-link{padding:9px 13px;border-radius:999px;color:#d3dbf5;text-decoration:none;font:600 0.84rem/1 Figtree,system-ui,sans-serif;transition:background 0.18s ease,color 0.18s ease}.ds-nav-link:hover{background:rgba(255,255,255,0.1);color:#f4f6ff}.ds-nav-link:focus-visible{outline:3px solid #7ff3e8;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Aurora Kiosk",
+    "overview": "Snapbooth Glass is a luminous, glass-wrapped photobooth: a compact kiosk of frosted panes, aurora glows, and crisp specular highlights that feels premium yet playful in a live event moment. The interface behaves like stacked glass set against a deep midnight scene—light drifts behind it, surfaces catch highlights, and controls invite touch without stealing attention from the camera and the keepsake strip.\n\nThe visual philosophy is playful, luminous, polished. Translucency, blur, and soft color blooms create atmosphere; confident Syne display moments and calm Figtree UI copy keep the experience legible and effortless. Density stays comfortable for quick, in-the-moment decisions (style, shoot, retake, save/share) while giving the resulting strip a sense of occasion.",
+    "keyCharacteristics": [
+      "Frosted glass layering with specular rims, soft ambient lift, and aurora backlighting (never flat slabs).",
+      "Deep midnight grounds (#070b1d) animated by Electric Amethyst, Aurora Mint, Flash Magenta, and Warm Filament blooms.",
+      "Syne for expressive display/brand moments; Figtree for clear, friendly controls and body text.",
+      "Tactile pill controls and panels with visible hover/focus/pressed states and generous tap targets (≥44px).",
+      "Photo/strip content remains the hero; UI chrome frames and elevates the keepsake rather than competing with it."
+    ],
+    "rules": [
+      {
+        "name": "The Luminous Rarity Rule",
+        "body": "Aurora accents (especially Electric Amethyst, Aurora Mint, Flash Magenta) earn attention through contrast against Midnight Void and frosted glass. Use saturated accents for actions, focus, active/selected states, and ambient glow—not as large flat fills that drown the camera view or the strip.",
+        "section": "colors"
+      },
+      {
+        "name": "The Camera-First Voice Rule",
+        "body": "Typography frames the moment; it does not compete with the live preview or the photo strip. Reserve Syne’s weight and tight tracking for a few key moments (hero, brand, section anchors) and let Figtree carry instructions and controls.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glass, Not Weight Rule",
+        "body": "Prefer translucency, blur, rim light, and ambient separation over heavy opaque elevation steps. Lift communicates layering; it must never muddy the camera feed or reduce text/strip contrast.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve frosted glass layering: pair translucent fills (e.g. `rgba(13,19,48,0.32)` / `rgba(255,255,255,0.07)`) with `backdrop-filter: blur(...) saturate(...)`, soft ambient shadows, and specular rims/highlights as in `.glass`/`.topbar`.",
+      "Do keep the camera preview and photo strip as the visual focus; use Midnight Void (#070b1d) grounds and restrained UI chrome so captures remain clear.",
+      "Do use Syne 800 for display/brand anchors and Figtree for body/controls, maintaining the observed scale (display `clamp(2.5rem,6vw,4.1rem)/0.98`, labels 0.72–0.85rem tracked/uppercase where established).",
+      "Do use tactile pill controls (min 44px targets) with explicit hover, active, selected (`aria-pressed=\"true\"`), and disabled states; keep `:focus-visible` highly visible with Focus Cyan (#7ff3e8).",
+      "Do apply aurora accents (Electric Amethyst #7c5cff, Aurora Mint #2ee6d6, Flash Magenta #ff5fa2, Warm Filament #ffc46b) for gradients, glows, selection, and emphasis per the Luminous Rarity Rule.",
+      "Do honor reduced motion (`prefers-reduced-motion: reduce`) by disabling/simplifying animations, transitions, and transform effects as the current implementation does."
+    ],
+    "donts": [
+      "Don't flatten the system into opaque, solid panels or remove blur/rim-light layering; depth must read as glass with ambient lift, not heavy material slabs.",
+      "Don't introduce large flat floods of saturated accent color behind the camera/stage or strip; accents should glow and highlight, not overpower content.",
+      "Don't replace Syne/Figtree with unestablished typefaces or collapse the display-vs-UI hierarchy into a single uniform text style.",
+      "Don't create controls without clear state feedback or with tap targets below 44px; avoid hover-only affordances.",
+      "Don't add heavy drop shadows, harsh borders, or busy textures that compete with the frosted/aurora material or reduce legibility on dark glass.",
+      "Don't ignore accessibility baselines: maintain WCAG 2.1 AA contrast on text/controls, visible focus, and reduced-motion support."
+    ]
+  }
+}

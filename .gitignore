@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Uploaded/generated gallery data (private per session)
+server/strips/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Logs and diagnostics
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test/coverage
+coverage/
+
+# OS/editor/tooling
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local tool/agent state
+.opencode/
+.agents/
+
+# Temp
+*.tmp
+*.temp
+temp/

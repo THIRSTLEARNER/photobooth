@@ -1,0 +1,9 @@
+node_modules
+dist
+server/strips
+public/mediapipe
+.opencode
+package-lock.json
+
+.agents/
+.opencode/
