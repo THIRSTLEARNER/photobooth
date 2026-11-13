@@ -24,8 +24,8 @@ colors:
   edge-glass: 'rgba(255, 255, 255, 0.16)'
   surface-frost: 'rgba(255, 255, 255, 0.07)'
   surface-frost-hover: 'rgba(255, 255, 255, 0.16)'
-  glass-panel: 'rgba(13, 19, 48, 0.32)'
-  glass-nav: 'rgba(9, 14, 36, 0.58)'
+  glass-panel: 'rgba(9, 13, 22, 0.16)'
+  glass-nav: 'rgba(8, 11, 18, 0.28)'
   glass-overlay: 'rgba(10, 14, 36, 0.65)'
   notice-border: '#ff5fa2'
   hero-lilac: '#d9d4ff'
@@ -34,6 +34,7 @@ colors:
   hero-rose: '#ffb7d3'
   step-seafoam: '#9dfff4'
   strip-lavender: '#cdd6ff'
+  button-ink: '#0a0e1a'
   chrome-blue: '#4c7dff'
   chrome-teal: '#19d3c5'
   primary-lift: '#8b6bff'
@@ -142,8 +143,8 @@ spacing:
   wrap-y: 'clamp(18px, 3vw, 30px)'
 components:
   button-primary:
-    backgroundColor: 'linear-gradient(135deg, #8b6bff 0%, #6a47f0 42%, #e0408a 100%)'
-    textColor: '{colors.glass-ink}'
+    backgroundColor: '{colors.glass-ink}'
+    textColor: '{colors.button-ink}'
     typography: '{typography.body}'
     rounded: '{rounded.pill}'
     padding: '0 24px'
@@ -189,43 +190,43 @@ components:
 
 **Creative North Star: "The Aurora Kiosk"**
 
-Snapbooth Glass is a luminous, glass-wrapped photobooth: a compact kiosk of frosted panes, aurora glows, and crisp specular highlights that feels premium yet playful in a live event moment. The interface behaves like stacked glass set against a deep midnight scene—light drifts behind it, surfaces catch highlights, and controls invite touch without stealing attention from the camera and the keepsake strip.
+Snapbooth Glass is a luminous, glass-wrapped photobooth: a compact kiosk of frosted panes, soft monochrome light, and crisp specular highlights that feels premium yet playful in a live event moment. The interface behaves like stacked glass set against a deep midnight scene—light drifts behind it, surfaces catch highlights, and controls invite touch without stealing attention from the camera and the keepsake strip.
 
-The visual philosophy is playful, luminous, polished. Translucency, blur, and soft color blooms create atmosphere; confident Syne display moments and calm Figtree UI copy keep the experience legible and effortless. Density stays comfortable for quick, in-the-moment decisions (style, shoot, retake, save/share) while giving the resulting strip a sense of occasion.
+The visual philosophy is playful, luminous, polished. Translucency, blur, and soft light blooms create atmosphere; confident Syne display moments and calm Figtree UI copy keep the experience legible and effortless. Density stays comfortable for quick, in-the-moment decisions (style, shoot, retake, save/share) while giving the resulting strip a sense of occasion.
 
 **Key Characteristics:**
 
-- Frosted glass layering with specular rims, soft ambient lift, and aurora backlighting (never flat slabs).
-- Deep midnight grounds (`#070b1d`) animated by Electric Amethyst, Aurora Mint, Flash Magenta, and Warm Filament blooms.
+- Frosted glass layering with specular rims, soft ambient lift, and neutral backlighting (never flat slabs).
+- Deep midnight grounds (`#070b1d`) washed by soft monochrome light; Electric Amethyst, Aurora Mint, Flash Magenta, and Warm Filament are reserved for controls, keepsakes, and glow accents.
 - Syne for expressive display/brand moments; Figtree for clear, friendly controls and body text.
 - Tactile pill controls and panels with visible hover/focus/pressed states and generous tap targets (≥44px).
 - Photo/strip content remains the hero; UI chrome frames and elevates the keepsake rather than competing with it.
 
 ## Colors
 
-A nocturnal, aurora-lit palette: vivid luminous accents float over deep glass and midnight neutrals.
+A nocturnal, smoked-glass palette: vivid luminous accents float over a softly lit neutral glass field and midnight neutrals.
 
 ### Primary
 
-- **Electric Amethyst** (#7c5cff): Core brand/accent energy. Drives primary gradients, ambient orbs, active glows, and key emphasis moments.
+- **Electric Amethyst** (#7c5cff): Core brand/accent energy. Drives primary gradients, active glows, and key emphasis moments.
 - **Royal Amethyst** (#6a47f0): Deeper support tone in primary button gradients and shadow/glow accents, adding weight and contrast.
-- **Aurora Mint** (#2ee6d6): Signature cool accent. Used for highlights, step markers, focus-adjacent emphasis, active outlines, links/icons, and aurora blooms that signal freshness and clarity.
+- **Aurora Mint** (#2ee6d6): Signature cool accent. Used for highlights, step markers, focus-adjacent emphasis, active outlines, links/icons, and luminous details that signal freshness and clarity.
 
 ### Secondary
 
-- **Flash Magenta** (#ff5fa2): Playful warm accent in gradients, orbs, and attention states (e.g. notices/danger-leaning highlights) that add celebratory energy.
+- **Flash Magenta** (#ff5fa2): Playful warm accent in gradients and attention states (e.g. notices/danger-leaning highlights) that add celebratory energy.
 - **Deep Magenta** (#e0408a): Rich magenta anchor in primary gradients, grounding Flash Magenta with a polished finish.
 
 ### Tertiary
 
-- **Warm Filament** (#ffc46b): A warm glow accent for ambient orbs and gradient warmth; used sparingly to keep the scene lively without dominating.
+- **Warm Filament** (#ffc46b): A warm glow accent for gradient warmth and small luminous details; used sparingly to keep the scene lively without dominating.
 - **Seafoam Glint** (#9df3ea): Soft mint highlight for eyebrow/overline text and luminous details.
 - **Focus Cyan** (#7ff3e8): High-visibility focus ring (`:focus-visible`) to keep keyboard navigation unmistakable on dark glass.
 - **Success Mint** (#3cf0a0): Positive status indicator dot/glow (e.g. ready/meta cues).
 
 ### Neutral
 
-- **Midnight Void** (#070b1d): Global background base behind aurora gradients and glass layers.
+- **Midnight Void** (#070b1d): Global background base behind neutral light washes and glass layers.
 - **Glass Ink** (#f4f6ff): Primary text on dark/glass surfaces; also the light end of controls and slider thumbs.
 - **Mist Muted** (#d3dbf5): Secondary text, helper copy, and subdued UI labels.
 - **Cool Label** (#cbd3f2): Uppercase field labels and restrained UI headings.
@@ -234,9 +235,9 @@ A nocturnal, aurora-lit palette: vivid luminous accents float over deep glass an
 - **Strip Caption** (#6a74a8): Subdued caption/meta text on the light strip preview.
 - **Edge Faint** (rgba(255, 255, 255, 0.14)) / **Edge Strong** (rgba(255, 255, 255, 0.28)) / **Edge Glass** (rgba(255, 255, 255, 0.16)): Translucent borders defining glass edges at varying emphasis.
 - **Surface Frost** (rgba(255, 255, 255, 0.07)) / **Surface Frost Hover** (rgba(255, 255, 255, 0.16)): Default and hover fills for quiet controls and chips.
-- **Glass Panel** (rgba(13, 19, 48, 0.32)) / **Glass Nav** (rgba(9, 14, 36, 0.58)) / **Glass Overlay** (rgba(10, 14, 36, 0.65)): Translucent structural fills for panels, navigation, and overlays with backdrop blur.
+- **Glass Panel** (rgba(9, 13, 22, 0.2)) / **Glass Nav** (rgba(8, 11, 18, 0.26)) / **Glass Overlay** (rgba(10, 14, 36, 0.65)): Translucent neutral structural fills for panels, navigation, and overlays with backdrop blur.
 
-**The Luminous Rarity Rule.** Aurora accents (especially Electric Amethyst, Aurora Mint, Flash Magenta) earn attention through contrast against Midnight Void and frosted glass. Use saturated accents for actions, focus, active/selected states, and ambient glow—not as large flat fills that drown the camera view or the strip.
+**The Luminous Rarity Rule.** Aurora accents (especially Electric Amethyst, Aurora Mint, Flash Magenta) earn attention through contrast against Midnight Void and neutral frosted glass. Use saturated accents for actions, focus, active/selected states, and glow accents—not as large flat fills that drown the camera view or the strip.
 
 ## Typography
 
@@ -268,12 +269,12 @@ A nocturnal, aurora-lit palette: vivid luminous accents float over deep glass an
 
 ## Elevation & Depth
 
-Depth is **glass layering with ambient lift**. Surfaces read as frosted panes stacked over a living aurora field rather than opaque cards casting heavy drop shadows.
+Depth is **glass layering with ambient lift**. Surfaces read as frosted panes stacked over a softly lit neutral field rather than opaque cards casting heavy drop shadows.
 
-- **Material:** Translucent fills (`rgba(...)` whites/dark blues), `backdrop-filter: blur(... ) saturate(...)`, and gradient sheens create separation. A fine film-grain overlay on `body` adds tactile texture without obscuring content.
-- **Light & speculars:** Panels and nav use top/inner highlights (`inset 0 1px 0 ...`) and gradient rim treatments (pseudo-element borders/masks on `.glass`) to mimic lit glass edges and glancing reflections.
-- **Ambient shadows:** Soft, wide, low-contrast outer shadows (e.g. `0 30px 70px -24px ...`, `0 22px 45px -26px ...`) lift panes gently; the camera stage uses inner vignette/shadow for depth.
-- **Atmosphere:** Fixed aurora orbs and radial background gradients supply color depth behind glass; hover states can add restrained colored glow (e.g. gallery hover).
+- **Material:** Translucent fills (`rgba(...)` whites/dark blues), `backdrop-filter: blur(36px) saturate(190%) brightness(0.68)` on panels and lighter blur on small controls, and layered gradient sheens (top bloom, diagonal glare, bottom bounce) create separation. A fine film-grain overlay on `body` adds tactile texture without obscuring content.
+- **Light & speculars:** Panels and nav use top/inner highlights (`inset 0 1px 0 ...`), a bright masked gradient rim, a faint inner edge ring, and a soft bottom inner glow that reads as glass thickness.
+- **Ambient shadows:** Soft, wide, low-contrast outer shadows (e.g. `0 34px 78px -26px ...`, `0 24px 50px -26px ...`) lift panes gently; the camera stage uses inner vignette/shadow for depth.
+- **Atmosphere:** Fixed monochrome light orbs and neutral radial gradients supply luminance behind glass; hover states can add restrained colored glow (e.g. gallery hover).
 
 **The Glass, Not Weight Rule.** Prefer translucency, blur, rim light, and ambient separation over heavy opaque elevation steps. Lift communicates layering; it must never muddy the camera feed or reduce text/strip contrast.
 
@@ -291,8 +292,8 @@ Components are tactile glass controls: frosted, rounded, and responsive, with cl
 ### Buttons
 
 - **Shape:** Pill (999px radius). Comfortable heights (≥44–52px).
-- **Primary (`.btn`):** Amethyst-to-magenta gradient fill, white (Glass Ink) text, subtle border, inner highlight, and ambient colored shadow. Hover lifts slightly, brightens, and sweeps a specular sheen; active settles. Disabled dims with no lift/shadow.
-- **Quiet (`.btn.quiet`):** Frosted translucent fill with soft border/inner highlight; hover increases frost opacity. Used for secondary actions.
+- **Primary (`.btn`):** Frosted glass-white fill (translucent white gradient over blur), deep-ink text, a bright rim, top highlight, cool inner shading at the base for thickness, and ambient neutral shadow. Hover lifts slightly and brightens toward pure white; active compresses with a softer inner shadow. Disabled dims with no lift/shadow. No colored gradient or moving sheen.
+- **Quiet (`.btn.quiet`):** Dark frosted glass — translucent white sheen over a blurred dark fill, brighter rim and inner highlight with light text; hover increases frost opacity and rim brightness. Used for secondary actions.
 - **Focus:** Prominent `:focus-visible` outline in Focus Cyan (#7ff3e8, 3px, offset 3px) across interactive elements.
 
 ### Chips & Toggles
@@ -303,7 +304,7 @@ Components are tactile glass controls: frosted, rounded, and responsive, with cl
 
 ### Cards / Containers
 
-- **Glass Panels (`.glass`):** Large radius (~30px), translucent layered background over blur+saturate, ambient outer shadows, inner highlights, and a gradient rim + glare overlay for specular depth.
+- **Glass Panels (`.glass`):** Large radius (~30px), translucent layered background (top bloom + diagonal body wash + base fill) over deeper blur+saturate, ambient outer shadows, bright masked rim, inner edge ring, bottom inner glow, and a two-direction glare overlay for specular depth.
 - **Stage (`.stage`):** Rounded camera viewport (20px) with dark radial ground, inner vignette, and a top-left specular sheen; contains overlays, pills, and video.
 - **Hero/Info tiles:** Frosted rounded blocks (16px) with soft borders and inner highlights for steps/meta.
 - **Footer:** A wide glass bar (20–30px effective) aligning brand, note, and nav.
@@ -339,7 +340,7 @@ Concrete guardrails grounded in the incumbent "Aurora Kiosk" glass system and th
 
 ### Do:
 
-- **Do** preserve frosted glass layering: pair translucent fills (e.g. `rgba(13,19,48,0.32)` / `rgba(255,255,255,0.07)`) with `backdrop-filter: blur(...) saturate(...)`, soft ambient shadows, and specular rims/highlights as in `.glass`/`.topbar`.
+- **Do** preserve frosted glass layering: pair translucent fills (e.g. `rgba(9,13,22,0.2)` / `rgba(255,255,255,0.16)`) with `backdrop-filter: blur(...) saturate(...) brightness(...)`, soft ambient shadows, and specular rims/highlights as in `.glass`/`.topbar`/`.btn`.
 - **Do** keep the camera preview and photo strip as the visual focus; use Midnight Void (#070b1d) grounds and restrained UI chrome so captures remain clear.
 - **Do** use Syne 800 for display/brand anchors and Figtree for body/controls, maintaining the observed scale (display `clamp(2.5rem,6vw,4.1rem)/0.98`, labels 0.72–0.85rem tracked/uppercase where established).
 - **Do** use tactile pill controls (min 44px targets) with explicit hover, active, selected (`aria-pressed="true"`), and disabled states; keep `:focus-visible` highly visible with Focus Cyan (#7ff3e8).

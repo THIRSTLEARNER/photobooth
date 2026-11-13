@@ -13,7 +13,6 @@ export function TopBar() {
         <a href="#booth">The booth</a>
         <a href="#gallery">Gallery</a>
       </nav>
-      <span className="topbar-badge">Glass photobooth · no sign-up</span>
     </header>
   );
 }
